@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <style>
+        .main{width:1190px;margin:0 auto; background: #ccc;}
+        .goTop{position:fixed; right:0; bottom:50px; width:40px; height:44px; display: none; background: #0d99a5; border-radius: 10px; text-decoration: none; color:#fff; text-align: center}
+    </style>
+</head>
+<body>
+<div class="main" style="height:9700px;">
+    This is a simple demo
+</div>
+<a href="javascript:;" class="goTop" id="goTop">回到顶部</a>
+<script>
+window.onload = function(){
+    var btn = document.getElementById('goTop');
+    var clienH = document.documentElement.clientHeight;//获取页面可视区高度
+    var timer = null;
+    var istop = true;
+    //获取滚动条的位置
+    window.onscroll = function(){
+        var ostop = document.documentElement.scrollTop || document.body.scrollTop;  //兼容写法;前者chorme不支持；
+        if(ostop >= clienH ){
+            document.getElementById('goTop').style.display = 'block';
+        }else{
+            document.getElementById('goTop').style.display = 'none';
+        }
+        if(!istop){
+            clearInterval(timer)
+        }
+        istop = false;
+    }
+    btn.onclick = function(){
+        //设置定时器
+        timer = setInterval(function(){
+            var ostop = document.documentElement.scrollTop || document.body.scrollTop;  
+            var ispeed = Math.floor(-ostop / 3);  //换别的除数 结果有可能不为整数  故需要转化为整数
+            istop = true;
+            document.documentElement.scrollTop = document.body.scrollTop -= ostop + ispeed;   //此属性 可读 可写
+            console.log(ostop + ispeed);
+            if(ostop == 0){
+                clearInterval(timer)
+            }
+        },30)
+    }
+}
+</script>
+</body>
+</html>
