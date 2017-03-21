@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单个展开收起</title>
+    <style>
+        .main{width:1190px; margin:0 auto; background: #fefefe;}
+        .content{border:1px solid #ddd; background: #ccc; width:900px; margin:0 auto; position: relative; margin-bottom: 50px;}
+        .linkbtn{display:inline-block; position:absolute; text-decoration: none; background: #0d99a5; border-radius: 5px; width:60px; height:24px; text-align: center; color:#fff;}
+        .fold{display:none;}
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="content">
+        <h2>title say something</h2>
+        <p>list one</p>
+        <p>list two</p>
+        <div class="fold" id="fold">
+            <p>list more</p>
+        </div>
+        <a href="javascript:;" class="linkbtn" onclick="showdiv()" id="btn">展开</a>
+    </div>
+
+</div>
+<script>
+    function showdiv(){
+        document.getElementById('fold').style.display = 'block';
+        document.getElementById('btn').text = '收起';
+        document.getElementById('btn').onclick = hidediv;
+    }
+    function hidediv(){
+        document.getElementById('fold').style.display = 'none';
+        document.getElementById('btn').text = '展开';
+        document.getElementById('btn').onclick = showdiv;
+    }
+
+    //parentNode nextSibling
+</script>
+</body>
+</html>
