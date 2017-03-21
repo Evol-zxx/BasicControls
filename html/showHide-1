@@ -25,14 +25,18 @@
 </div>
 <script>
     function showdiv(){
-        document.getElementById('fold').style.display = 'block';
-        document.getElementById('btn').text = '收起';
-        document.getElementById('btn').onclick = hidediv;
+        byId('fold').style.display = 'block';
+        byId('btn').text = '收起';
+        byId('btn').onclick = hidediv;
     }
     function hidediv(){
-        document.getElementById('fold').style.display = 'none';
-        document.getElementById('btn').text = '展开';
-        document.getElementById('btn').onclick = showdiv;
+        byId('fold').style.display = 'none';
+        byId('btn').text = '展开';
+        byId('btn').onclick = showdiv;
+    }
+    //提取ID
+    function byId(id){
+        return document.getElementById(id);
     }
 
     //parentNode nextSibling
