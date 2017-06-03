@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    li.active{
+        background:#000;
+        color:#fff;
+    }
+    </style>
+</head>
+<body>
+    <ul class="itemList">
+        <li>apple</li>
+        <li>rorerererer</li>
+        <li>listimte</li>
+        <li>pear</li>
+        <li>orange</li>
+    </ul>
+<script>
+//对event事件对象的熟悉 event.target不同于this
+    window.onload = function(){
+        let list = document.querySelector('.itemList');
+        let items = document.querySelectorAll('.itemList > li');
+        list.addEventListener('click',function(e){
+            console.log(e);
+            console.log(e.target);
+            console.log(e.type);
+            console.log(e.currentTarget);
+            // console.log(this);
+            if(e.target.tagName === 'LI'){
+                let item = e.target;
+                items.forEach(function(item){
+                    console.log(item);
+                    // item.style.background = 'inherit';
+                    // item.style.color = 'inherit';
+                    item.className = '';
+                });
+                // item.style.background = '#000';
+                // item.style.color = '#fff';
+                item.className = 'active';
+                // console.log(item.innerHTML);
+            }
+        })
+    }
+</script>
+</body>
+</html>
